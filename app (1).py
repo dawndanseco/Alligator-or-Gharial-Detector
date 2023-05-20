@@ -6,15 +6,15 @@ import cv2
 
 def main():
     # set up the Streamlit app
-    st.write("Name: Andre Christian G. Dalmacio")
+    st.write("Name: Dawn Alyssa B. Danseco")
     st.write("Section: CPE32S5")
     st.write("Instructor: Dr. Jonathan Taylar")
-    st.title("Lights Classification ( Lamp/Chandelier)")
-    st.write("This app classifies whether an uploaded image contains a Lamp or Chandelier images using a pre-trained convolutional neural network model.")
+    st.title("Alligator or Gharial Detector ( Alligator/Gharial)")
+    st.write("This app classifies whether an uploaded image contains an Alligator or Gharial. It is a pre-trained convolutional neural network model.")
    
     @st.cache_resource
     def load_model():
-        model = tf.keras.models.load_model('weights-improvement-07-0.98.hdf5')
+        model = tf.keras.models.load_model('weights-improvement-09-0.90.hdf5')
         return model
     
     def import_and_predict(image_data, model):
@@ -27,13 +27,13 @@ def main():
         return prediction
 
     model = load_model()
-    class_names = ["Chandelier", "Lamp"]
+    class_names = ["Alligator", "Gharial"]
     
 
-    file = st.file_uploader("Choose a Lamp or Chandelier picture from your computer", type=["jpg", "png", "jpeg"])
+    file = st.file_uploader("Choose an ALLIGATOR or GHARIAL image from your computer!", type=["jpg", "png", "jpeg"])
 
     if file is None:
-        st.text("Please upload an image file")
+        st.text("Please upload an image file!")
     else:
         image = Image.open(file)
         st.image(image, use_column_width=True)
